@@ -162,7 +162,7 @@ class Params(abc.ABC):
             if is_dataclass(ftype) and field.default_factory != dataclasses.MISSING:
                 try:
                     value = field.default_factory()
-                    typeguard.check_type(field.name, value, field.type)
+                    typeguard.check_type(value, field.type)
                 except TypeError:
                     raise DefaultDataClassValue(
                         f"`default_factory` for field {field.name} of class {cls.__name__} "
